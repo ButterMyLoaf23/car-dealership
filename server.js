@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import { testConnection } from "./src/models/setup.js";
 import authRoutes from "./src/controllers/authRoutes.js";
 import dashboard from "./src/controllers/dashboard.js";
+import vehicles from "./src/controllers/vehicles.js";
 
 dotenv.config();
 
@@ -37,13 +38,16 @@ app.get ("/", (req, res) => {
     res.render("index", { title: "Home" });
 });
 
-// my authRoutes link
+// this is for my authRoutes route
 app.use("/", authRoutes);
 
-// this is for my dashboard 
+// this is for the dashboard route
 app.use("/", dashboard);
 
-app.use((req, res, next) => {
+// this is for the vehicle route
+app.use("/", vehicles);
+
+app.use((err, req, res, next) => {
     const status = err.status || 500;
     const template = status === 404 ? "404" : "500";
 
