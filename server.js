@@ -3,7 +3,7 @@ import session from "express-session";
 import dotenv from "dotenv";
 import Path from "path";
 import { fileURLToPath } from "url";
-import { testConnection } from "./models/setup.js";
+import { testConnection } from "./setup.js";
 
 dotenv.config();
 
