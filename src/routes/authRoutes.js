@@ -38,6 +38,12 @@ router.post("/login", async (req, res) => {
         return res.send("This user was not found");
     }
 
+    const match = await bcrypt.compare(password, user.password);
+
+    if (!match) {
+        return res.send("Password is incorrect");
+    }
+
     req.session.user = {
         id: user.id,
         role: user.role

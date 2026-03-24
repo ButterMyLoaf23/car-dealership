@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import Path from "path";
 import { fileURLToPath } from "url";
 import { testConnection } from "./src/models/setup.js";
+import authRoutes from "./src/routes/authRoutes.js";
 
 dotenv.config();
 
@@ -34,6 +35,9 @@ app.use(session({
 app.get ("/", (req, res) => {
     res.render("index", { title: "Home" });
 });
+
+// my authRoutes link
+app.use("/", authRoutes);
 
 app.use((req, res, next) => {
     const status = err.status || 500;
