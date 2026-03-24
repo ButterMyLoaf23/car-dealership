@@ -3,6 +3,7 @@ import session from "express-session";
 import dotenv from "dotenv";
 import Path from "path";
 import { fileURLToPath } from "url";
+import { testConnection } from "./models/setup.js";
 
 dotenv.config();
 
@@ -42,6 +43,8 @@ app.use((req, res, next) => {
         title: status === 404 ? "Page not found" : "Server error", error: err.message, stack: NODE_ENV === "dev" ? err.stack : null
   });
 });
+
+testConnection();
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
