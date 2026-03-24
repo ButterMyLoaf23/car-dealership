@@ -3,7 +3,7 @@ import session from "express-session";
 import dotenv from "dotenv";
 import Path from "path";
 import { fileURLToPath } from "url";
-import { testConnection } from "./models/setup.js";
+import { testConnection } from "./src/models/setup.js";
 
 dotenv.config();
 
@@ -21,7 +21,7 @@ app.use(express.static(Path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
 // Tells express where my views are
-app.set("views", Path.join(__dirname, "views"));
+app.set("views", Path.join(__dirname, "src", "views"));
 
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb"}));

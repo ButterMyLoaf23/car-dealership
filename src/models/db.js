@@ -1,22 +1,15 @@
-import { pool } from "pg";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import { checkServerIdentity } from "tls";
+import pkg from "pg";
+import dotenv from "dotenv";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+dotenv.config();
 
-const caCert = fs.readFileSync(path.join(__dirname, "../bin/", "byuicse-psql-cert.pem"));
+const { Pool } = pkg;
 
-
-const pool = new Pool ({
-    connectionString: process.env.DB_URL,
-    ssl: {
-        ca: caCert,
-        rejectUnauthorized: true,
-        checkServerIdentity: () => { return undefined; }
-    }
+const pool = new Pool({
+  connectionString: process.env.DB_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 export default pool;
