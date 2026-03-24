@@ -4,7 +4,8 @@ import dotenv from "dotenv";
 import Path from "path";
 import { fileURLToPath } from "url";
 import { testConnection } from "./src/models/setup.js";
-import authRoutes from "./src/routes/authRoutes.js";
+import authRoutes from "./src/controllers/authRoutes.js";
+import dashboard from "./src/controllers/dashboard.js";
 
 dotenv.config();
 
@@ -38,6 +39,9 @@ app.get ("/", (req, res) => {
 
 // my authRoutes link
 app.use("/", authRoutes);
+
+// this is for my dashboard 
+app.use("/", dashboard);
 
 app.use((req, res, next) => {
     const status = err.status || 500;
