@@ -1,0 +1,13 @@
+<h1>Service Department</h1>
+
+<h2>Your Requests</h2>
+
+<ul>
+    <% requests.forEach(req => { %>
+        <li>
+            Status: <strong><%= req.status %></strong>
+            <br/>
+            Notes: <%= req.notes %>
+        </li>
+    <% }) %>
+</ul>
