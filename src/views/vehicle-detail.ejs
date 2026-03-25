@@ -2,3 +2,9 @@
 
 <p>Price: $<%= vehicle.price %></p>
 <p><%= vehicle.description %></p>
+
+<% if (user && user.role === "admin") { %>
+    <form method="POST" action="/vehicles/<%= vehicle.id %>/delete">
+        <button type="submit">Delete</button>
+    </form>
+<% } %>

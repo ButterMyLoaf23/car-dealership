@@ -31,4 +31,13 @@ router.post("/vehicles", requiredRole("admin"), async (req, res) => {
     res.redirect("/vehicles");
 });
 
+//this will be for deleting vehicles from the page only for admins
+router.post("/vehicles/:id/delete", requiredRole("admin"), async (req, res) => {
+    const { id } = req.params;
+
+    await pool.query("DELETE FROM vehicles WHERE id = $1", [id]);
+
+    res.redirect("/vehicles");
+});
+
 export default router;

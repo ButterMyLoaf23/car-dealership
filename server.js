@@ -7,6 +7,7 @@ import { testConnection } from "./src/models/setup.js";
 import authRoutes from "./src/controllers/authRoutes.js";
 import dashboard from "./src/controllers/dashboard.js";
 import vehicles from "./src/controllers/vehicles.js";
+import { definedUser } from "./src/middleware/global.js";
 
 dotenv.config();
 
@@ -33,6 +34,9 @@ app.use(express.urlencoded({ extended: true, limit: "10mb"}));
 app.use(session({
     secret: "secret-key", resave: false, saveUninitialized: false
 }));
+
+//this is for my definedUser middleware
+app.use(definedUser);
 
 app.get ("/", (req, res) => {
     res.render("index", { title: "Home" });

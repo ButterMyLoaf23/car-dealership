@@ -11,5 +11,10 @@ export const requiredRole = (role) => {
             return res.send("Access denied bro");
         }
         next();
-    }
+    };
+};
+
+export const definedUser = (req, res, next) => {
+    res.locals.user = req.session.user || null;
+    next();
 }
