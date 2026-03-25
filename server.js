@@ -33,7 +33,7 @@ app.use(express.urlencoded({ extended: true, limit: "10mb"}));
 
 // This is my session info, this will make it so my server doesn't save unless a changed is made, and it doesn't initialize my server unless a user logs on
 app.use(session({
-    secret: "secret-key", resave: false, saveUninitialized: false
+    secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false
 }));
 
 //this is for my definedUser middleware
