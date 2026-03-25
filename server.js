@@ -47,13 +47,20 @@ app.use("/", dashboard);
 // this is for the vehicle route
 app.use("/", vehicles);
 
-app.use((err, req, res, next) => {
-    const status = err.status || 500;
-    const template = status === 404 ? "404" : "500";
+app.use((req, res, next) => {
+    res.status(404).render("errors/404", {
+        title: "Page Not Found"
+    });
+});
 
-    res.status(status).render(template, {
-        title: status === 404 ? "Page not found" : "Server error", error: err.message, stack: NODE_ENV === "dev" ? err.stack : null
-  });
+app.use((err, req, res, next) => {
+    console.error(err);
+
+    res.status(500).render("errors/500", {
+        title: "Server Error",
+        error: err.message,
+        stack: process.env.NODE_ENV === "development" ? err.stack : null
+    });
 });
 
 testConnection();
