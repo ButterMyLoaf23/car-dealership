@@ -1,0 +1,21 @@
+<header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/vehicles">Vehicles</a>
+        <a href="/service">Services</a>
+
+        <% if (user) { %>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+
+            <% if (user.role === "admin") { %>
+                <a href="/vehicles/new">Add Vehicle</a>
+                <a href="/admin/service">Service Admin</a>
+            <% } %>
+
+        <% } else { %>
+            <a href="/login">Login</a>
+            <a href="/register">Sign up</a>
+        <% } %>
+    </nav>
+</header>
