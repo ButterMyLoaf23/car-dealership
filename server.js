@@ -8,6 +8,7 @@ import authRoutes from "./src/controllers/authRoutes.js";
 import dashboard from "./src/controllers/dashboard.js";
 import vehicles from "./src/controllers/vehicles.js";
 import { definedUser } from "./src/middleware/global.js";
+import review from "./src/controllers/review.js";
 
 dotenv.config();
 
@@ -50,6 +51,9 @@ app.use("/", dashboard);
 
 // this is for the vehicle route
 app.use("/", vehicles);
+
+//This is for my reviews
+app.use("/", review);
 
 app.use((req, res, next) => {
     res.status(404).render("errors/404", {

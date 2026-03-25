@@ -13,9 +13,17 @@ router.get("/vehicles", async (req, res) => {
 //this is to get a single vehicle's info
 router.get ("/vehicle/:id", async (req, res) => {
     const { id } = req.params;
-    const result = await pool.query("SELECT * FROM vehicles WHERE id = $1", [id]);
+    const vehicleResult = await pool.query("SELECT * FROM vehicles WHERE id = $1", [id]);
+    const reviewResult = await pool.query("SELECT reviews.*, users.name FROM reviews JOIN users on reviews.user_id = users.id WHERE vehicle_id = $1", [id]);
 
-    res.render("vehicle-detail", { vehicle: result.rows[0] });
+    let avgRating = 0;
+
+if (reviewResult.rows.length > 0) {
+    const total = reviewResult.rows.reduce((sum, r) => sum + r.rating, 0);
+    avgRating = (total / reviewResult.rows.length).toFixed(1);
+}
+
+    res.render("vehicle-detail", { vehicle: vehicleResult.rows[0], reviews: reviewResult.rows, avgRating });
 });
 
 //this will show the vehicle add form for the admin view
