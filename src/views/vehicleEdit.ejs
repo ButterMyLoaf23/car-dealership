@@ -1,0 +1,9 @@
+<h1>Edit Vehicle</h1>
+
+<form method="POST" action="/vehicles/<%= vehicle.id %>">
+    <input name="title" value="<%= vehicle.title %>" required/>
+    <input name="year" type="number" value="<%= vehicle.year %>" required/>
+    <input name="price" type="number" value="<%= vehicle.price %>" required/>
+    <textarea name="description"><%= vehicle.description %></textarea>
+    <button type="submit">Edit Info</button>
+</form>

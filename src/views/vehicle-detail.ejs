@@ -8,3 +8,9 @@
         <button type="submit">Delete</button>
     </form>
 <% } %>
+
+<% if (user && user.role === "admin") { %>
+    <form method="GET" action="/vehicles/<%= vehicle.id %>/edit">
+        <button type="submit">Edit info</button>
+    </form>
+<% } %>

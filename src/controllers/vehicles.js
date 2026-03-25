@@ -40,4 +40,23 @@ router.post("/vehicles/:id/delete", requiredRole("admin"), async (req, res) => {
     res.redirect("/vehicles");
 });
 
+//This shows the edit form
+router.get("/vehicles/:id/edit", requiredRole("admin"), async (req, res) => {
+    const { id } = req.params;
+
+    const result = await pool.query("SELECT * FROM vehicles WHERE id = $1", [id]);
+
+    res.render("vehicleEdit", { vehicle: result.rows[0] });
+});
+
+//This will update the vehicle information
+router.post("/vehicles/:id", requiredRole("admin"), async (req, res) => {
+    const { id } = req.params;
+    const { title, price, description, year } = req.body;
+
+    await pool.query("UPDATE vehicles SET title=$1, price=$2, description=$3, year=$4 WHERE id=$5", [title, price, description, year, id]);
+
+    res.redirect(`/vehicle/${id}`);
+})
+
 export default router;
