@@ -1,13 +1,32 @@
-<%- include("partials/header") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicles</title>
+    <link rel="stylesheet" href="/css/vehicles.css">
+</head>
+<header>
+    
+    <body>
 
-<h1>All Vehicles</h1>
+        <%- include("partials/header") %>
 
-<ul>
-    <% vehicles.forEach(vehicle => { %>
-        <li>
-            <a href="/vehicle/<%= vehicle.id %>">
-                <%= vehicle.year %> <%= vehicle.title %> - $<%= vehicle.price %>
-            </a>
-        </li>
-    <% }) %>
-</ul>
+        <h1>All Vehicles</h1>
+
+        <div class="vehicle-grid">
+            <% vehicles.forEach(vehicle => { %>
+                <a href="/vehicle/<%= vehicle.id %>" class="vehicle-card">
+                    <img src="<%= vehicle.image_url %>" alt="car" />
+                    <div class="card-content">
+                        <h3><%= vehicle.year %> <%= vehicle.title %></h3>
+                    </div>
+                    <div class="price">
+                        $<%= vehicle.price %>
+                    </div>
+                </a>
+            <% }) %>
+        </div>
+    </body>
+</header>
+</html>
