@@ -52,4 +52,10 @@ router.post("/login", async (req, res) => {
     res.redirect("/");
 });
 
+router.post("/logout", (req, res) => {
+    req.session.destroy(() => {
+        res.redirect("/");
+    })
+})
+
 export default router;
