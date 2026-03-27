@@ -31,10 +31,11 @@ router.get("/vehicles/new", requiredRole("admin"), async (req, res) => {
     res.render("vehicleAdd");
 });
 
+// admin new vehicle form
 router.post("/vehicles", requiredRole("admin"), async (req, res) => {
-    const { year, title, price, description } = req.body;
+    const { year, title, price, description, image_url } = req.body;
     
-    await pool.query("INSERT INTO vehicles (year, title, price, description) VALUES ($1, $2, $3, $4)", [year, title, price, description]);
+    await pool.query("INSERT INTO vehicles (year, title, price, description, image_url) VALUES ($1, $2, $3, $4, $5)", [year, title, price, description, image_url]);
 
     res.redirect("/vehicles");
 });
