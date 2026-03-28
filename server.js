@@ -54,7 +54,7 @@ app.use("/", dashboard);
 app.use("/", vehicles);
 
 //This is for my reviews
-app.use("/", review);
+app.use("/reviews", review);
 
 //This is for the service page
 app.use ("/", service);

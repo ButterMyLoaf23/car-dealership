@@ -1,0 +1,7 @@
+<h1>Review Edit</h1>
+
+<form method="POST" action="/reviews/<%= review.id %>">
+    <input name="rating" value= "<%= review.rating %>" min="1" max="5" />
+    <textarea name="comment"><%= review.comment %></textarea>
+    <button type="submit">Update</button>
+</form>
