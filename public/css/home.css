@@ -1,0 +1,140 @@
+body {
+    background-color: #f5f5f5;
+    color: #333
+}
+
+.hero {
+    background: url('/images/hero-car.jpg') center/cover no-repeat;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    top: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.hero button {
+    padding: 12px 25px;
+    border: none;
+    background: #e60023;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.hero button:hover {
+    background: #c4001d;
+}
+
+.search-bar {
+  background: white;
+  padding: 20px;
+  margin: -50px auto 40px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.search-bar select,
+.search-bar input {
+  padding: 10px;
+  width: 18%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  background: #e60023;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.inventory {
+  padding: 40px;
+  text-align: center;
+}
+
+.inventory h2 {
+  margin-bottom: 30px;
+}
+
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.car-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.car-card:hover {
+  transform: translateY(-5px);
+}
+
+.car-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.car-card h3 {
+  padding: 10px;
+}
+
+.car-card p {
+  padding: 0 10px 10px;
+  color: #666;
+}
+
+.price {
+  color: #e60023;
+  font-weight: bold;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+  background: #111;
+  color: white;
+  text-align: center;
+}
+
+.feature-box {
+  max-width: 250px;
+}
+
+.feature-box h4 {
+  margin-bottom: 10px;
+}

@@ -4,12 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Dealership</title>
+    <link rel="stylesheet" href="./css/main.css">
 </head>
-<header>
-    <%- include("partials/header") %>
-
     <body>
-        <h1>Welcome to Valley Forge Auto</h1>
+        <header>
+            <%- include("partials/header") %>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Find Your Dream Car Today</h2>
+                <p>Best deals this side of the Mississippi</p>
+                <button>Browse Inventory</button>
+            </div>
+        </section>
+        <section class="searchbar">
+            <select>
+                <option>Make</option>
+                <option>Toyota</option>
+                <option>Honda</option>
+                <option>Ford</option>
+                <option>GMC</option>
+                <option>BMW</option>
+            </select>
+            
+            <select>
+                <option>Model</option>
+            </select>
+
+            <select>
+                <option>Year</option>
+            </select>
+
+            <button>Search</button>
+        </section>
+
+        <section class="inventory">
+            <h2>Featured Vehicles</h2>
+
+            <div class="car-grid">
+                <% vehicles.forEach(vehicle => { %>
+                    <%- include("partials/car-card", { vehicle: vehicle }) %>
+                <% }) %>
+            </div>
+        </section>
+        
+
+        
     </body>
-</header>
 </html>
+<h1>Welcome to Valley Forge Auto</h1>
