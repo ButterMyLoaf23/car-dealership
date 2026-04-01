@@ -1,7 +1,7 @@
 import express from "express";
 import pool from "../models/db.js";
 import { requiredRole } from "../middleware/global.js";
-import { getFeaturedVehicles } from "../models/vehicles.js";
+import { getFeaturedVehicles, getVehicleById, getAllVehicles } from "../models/vehicles.js";
 
 const router = express.Router();
 
@@ -69,9 +69,18 @@ router.post("/vehicles/:id", requiredRole("admin"), async (req, res) => {
     res.redirect(`/vehicle/${id}`);
 })
 
+// this is for my featured vehicles on my homepage
 router.get("/", async (req, res) => {
     const vehicles = await getFeaturedVehicles();
     res.render("index", {title: "Home", vehicles});
 })
+
+//this is for my sort function on my vehicle inventory page.
+router.get("/vehicles", async (req, res) => {
+    const sort = req.query.sort;
+    const vehicles = await getAllVehicles(sort);
+
+    res.render("vehicles", { vehicles, sort });
+});
 
 export default router;
