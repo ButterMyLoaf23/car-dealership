@@ -1,6 +1,7 @@
 import express from "express";
 import pool from "../models/db.js";
 import { requiredRole } from "../middleware/global.js";
+import { getFeaturedVehicles } from "../models/vehicles.js";
 
 const router = express.Router();
 
@@ -66,6 +67,11 @@ router.post("/vehicles/:id", requiredRole("admin"), async (req, res) => {
     await pool.query("UPDATE vehicles SET title=$1, price=$2, description=$3, year=$4 WHERE id=$5", [title, price, description, year, id]);
 
     res.redirect(`/vehicle/${id}`);
+})
+
+router.get("/", async (req, res) => {
+    const vehicles = await getFeaturedVehicles();
+    res.render("index", {title: "Home", vehicles});
 })
 
 export default router;

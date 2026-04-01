@@ -40,10 +40,6 @@ app.use(session({
 //this is for my definedUser middleware
 app.use(definedUser);
 
-app.get ("/", (req, res) => {
-    res.render("index", { title: "Home" });
-});
-
 // this is for my authRoutes route
 app.use("/", authRoutes);
 
