@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Form</title>
+</head>
+<body>
+    <header>
+        <%- include("partials/header") %>
+    </header>
+
+    <h1>Request Service</h1>
+
+    <form method="POSt" action="/service">
+        <input name="vehicle_id" placeholder="Vehicle ID" required />
+
+        <select name="service_type" required>
+            <option value="">Select Service</option>
+            <option>Oil Change</option>
+            <option>Tire Rotation</option>
+            <option>Brake Repair</option>
+            <option>Tune Up</option>
+        </select>
+
+        <textarea name="notes" placeholder="What is the issue you are having?"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

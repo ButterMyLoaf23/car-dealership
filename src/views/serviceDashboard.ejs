@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <header>
+        <%- include("/partials/header") %>
+    </header>
+
+    <h1>Manage Requests</h1>
+
+    <% request.forEach(request => { %>
+        <div>
+            <p><%= request.name %> - <%= request.title %></p>
+            <p><%= request.service_type %></p>
+            <p>Status: <%= request.status %></p>
+
+            <form method="POST" action="/service/<%= request.id %>/status">
+                <select name="status">
+                    <option>Pending</option>
+                    <option>In Progress</option>
+                    <option>Completed</option>
+                </select>
+                <button>Update</button>
+            </form>
+        </div>
+    <% }) %>
+
+</body>
+</html>

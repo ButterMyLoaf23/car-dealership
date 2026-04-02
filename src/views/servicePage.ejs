@@ -1,15 +1,26 @@
-<%- include("partials/header") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Requests</title>
+</head>
+<body>
+    <header>
+        <%- include("partials/header") %>
+    </header>
 
-<h1>Service Department</h1>
+    <h1>My Service Requests</h1>
 
-<h2>Your Requests</h2>
+    <a href="/service/new">New Request</a>
 
-<ul>
-    <% requests.forEach(req => { %>
-        <li>
-            Status: <strong><%= req.status %></strong>
-            <br/>
-            Notes: <%= req.notes %>
-        </li>
+    <% request.forEach(request => { %>
+        <div>
+            <p><strong>Service:</strong> <%= request.service_type %></p>
+            <p><strong>Status:</strong> <%= request.status %></p>
+            <p><%= request.notes %></p>
+        </div>
     <% }) %>
-</ul>
+
+</body>
+</html>
