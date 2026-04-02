@@ -9,17 +9,17 @@ export const getFeaturedVehicles = async () => {
 export const getAllVehicles = async (sort) => {
     let query = "SELECT * FROM vehicles";
 
-    if (sort === "price-asc") {
-        query += "ORDER BY price ASC";
+    if (sort === "price_asc") {
+        query += " ORDER BY price ASC";
     }
-    if (sort === "price-desc") {
-        query += "ORDER BY price DESC";
+     else if (sort === "price_desc") {
+        query += " ORDER BY price DESC";
     }
-    if (sort === "year-asc") {
-        query += "ORDER BY year ASC";
+     else if (sort === "year_asc") {
+        query += " ORDER BY year ASC";
     }
-    if (sort === "year-desc") {
-        query += "ORDER BY year DESC";
+     else if (sort === "year_desc") {
+        query += " ORDER BY year DESC";
     }
 
     const result = await pool.query(query);

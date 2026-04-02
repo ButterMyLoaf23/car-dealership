@@ -17,10 +17,10 @@
             <form method="GET" action="/vehicles" class="sort-form">
                 <select name="sort" onchange="this.form.submit()">
                     <option value="">Sort By</option>
-                    <option value="sort-asc">Price: Low --> High</option>
-                    <option value="sort-desc">Price: High --> Low</option>
-                    <option value="year-asc">Oldest</option>
-                    <option value="year-desc">Newest</option>
+                    <option value="sort_asc" <%= sort === "price_asc" ? "selected" : "" %>>Price: Low --> High</option>
+                    <option value="sort_desc" <%= sort === "price_desc" ? "selected" : "" %>>Price: High --> Low</option>
+                    <option value="year_asc" <%= sort === "year_desc" ? "selected" : "" %>>Oldest</option>
+                    <option value="year_desc" <%= sort === "year_asc" ? "selected" : "" %>>Newest</option>
                 </select>
             </form>
 
