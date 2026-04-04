@@ -16,6 +16,7 @@
 
     <% request.forEach(request => { %>
         <div>
+            <p><strong>Vehicle:</strong><%= request.year %> <%= request.make %> <%= request.model %></p>
             <p><strong>Service:</strong> <%= request.service_type %></p>
             <p><strong>Status:</strong> <%= request.status %></p>
             <p><%= request.notes %></p>

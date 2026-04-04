@@ -17,9 +17,9 @@ router.get("/service/new", requiredAuth, (req, res) => {
 
 //This will be for the creating the request
 router.post("/service", requiredAuth, async (req, res) => {
-    const { vehicle_id, service_type, notes } = req.body;
+    const { make, model, year, service_type, notes } = req.body;
 
-    await createServiceRequest(req.session.user.id, vehicle_id, service_type, notes);
+    await createServiceRequest(req.session.user.id, make, model, year, service_type, notes);
 
     res.redirect("/service");
 });

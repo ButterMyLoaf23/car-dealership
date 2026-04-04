@@ -13,7 +13,11 @@
     <h1>Request Service</h1>
 
     <form method="POSt" action="/service">
-        <input name="vehicle_id" placeholder="Vehicle ID" required />
+        <input name="make" placeholder="Make (e.g. Honda)" required />
+
+        <input name="model" placeholder="Model (e.g. Civic)" required />
+
+        <input name="year" type="number" placeholder="Year (e.g. 2020)" required />
 
         <select name="service_type" required>
             <option value="">Select Service</option>
