@@ -11,13 +11,11 @@
             <a href="/">Home</a>
             <a href="/vehicles">Vehicles</a>
             <a href="/service">Services</a>
-        </div>
-        <div class="nav-right">
-
             <% if (user && user.role === "admin") { %>
-                <a href="/vehicles/new">Add Vehicle</a>
                 <a href="/dashboard">Dashboard</a>
             <% } %>
+        </div>
+        <div class="nav-right">
 
             <% if (user) { %>
                 <form method="POST" action="/logout">
