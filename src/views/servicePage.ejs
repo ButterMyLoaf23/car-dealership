@@ -4,24 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Requests</title>
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
     <header>
         <%- include("partials/header") %>
     </header>
 
-    <h1>My Service Requests</h1>
+    <div class="service-container">
+        <div class="service-header">
+            <h1>My Service Requests</h1>
 
-    <a href="/service/new">New Request</a>
-
-    <% request.forEach(request => { %>
-        <div>
-            <p><strong>Vehicle:</strong><%= request.year %> <%= request.make %> <%= request.model %></p>
-            <p><strong>Service:</strong> <%= request.service_type %></p>
-            <p><strong>Status:</strong> <%= request.status %></p>
-            <p><%= request.notes %></p>
+            <a href="/service/new" class="btn">New Request</a>
         </div>
-    <% }) %>
 
+        <div class="service-grid">
+                <% if (request && request.length > 0) { %>
+                    <% request.forEach(request => { %>
+                
+                    <div class="service-card">
+                        <div class="card-top">
+                            <h3>
+                                <%= request.year %> <%= request.make %> <%= request.model %>
+                            </h3>
+                            <div class="status">
+                                <%= request.status %>
+                            </div>
+                        </div>
+                        <p class="service_type"><%= request.service_type %></p>
+
+                        <p class="notes"><%= request.notes %></p>
+                    </div>
+
+                <% }) %>
+            <% } else { %>
+                <p>No Service Requests</p>
+            <% } %>
+        </div>
+    </div>
 </body>
 </html>
