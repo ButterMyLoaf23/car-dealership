@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Edit</title>
+    <link rel="stylesheet" ref="./css/main.css">
+</head>
+<body>
+    <header>
+        <%- include("partials/header") %>
+    </header>
+
+    <h1>Edit Service Request</h1>
+
+    <form method="POST" action="/service/<%= request.id %>">
+        
+        <input name="make" value="<%= request.make %>" required/>
+        <input name="model" value="<%= request.model %>" required />
+        <input name="year" value="<%= request.year %>" required />
+
+        <select name="service_type">
+            <option <%= request.service_type === "Oil Change" ? "selected" : "" %>>Oil Change</option>
+            <option <%= request.service_type === "Tire Rotation" ? "selected" : "" %>>Tire Rotation</option>
+            <option <%= request.service_type === "Brake Repair" ? "selected" : "" %>>Brake Repair</option>
+            <option <%= request.service_type === "Tune Up" ? "selected" : "" %>>Tune up</option>
+        </select>
+        <textarea name="notes"><%= request.notes %></textarea>
+
+        <select name="status">
+            <option <%= request.status === "Pending" ? "selected" : "" %>>Pending</option>
+            <option <%= request.status === "In Progress" ? "selected" : "" %>>In Progress</option>
+            <option <%= request.status === "Completed" ? "selected" : "" %>>Completed</option>
+        </select>
+
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>

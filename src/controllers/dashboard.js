@@ -5,7 +5,7 @@ const router = express.Router();
 
 // this will only be for users that are logged in
 router.get("/dashboard", requiredAuth, (req, res) => {
-    res.send("Welcome to the dashboard");
+    res.render("dashboard")
 });
 
 // this is for the admin view

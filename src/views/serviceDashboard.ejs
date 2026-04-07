@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="./css/main.css"
 </head>
 <body>
     <header>
-        <%- include("/partials/header") %>
+        <%- include("partials/header") %>
     </header>
 
     <h1>Manage Requests</h1>
@@ -18,14 +19,22 @@
             <p><strong>Service:</strong><%= request.service_type %></p>
             <p><strong>Status:</strong><%= request.status %></p>
 
-            <form method="POST" action="/service/<%= request.id %>/status">
-                <select name="status">
-                    <option>Pending</option>
-                    <option>In Progress</option>
-                    <option>Completed</option>
-                </select>
-                <button>Update</button>
-            </form>
+            <div class="admin-power">
+                <form method="POST" action="/service/<%= request.id %>/status">
+                    <select name="status">
+                        <option>Pending</option>
+                        <option>In Progress</option>
+                        <option>Completed</option>
+                    </select>
+                    <button>Update</button>
+                </form>
+
+                <a href="/service/<%= request.id %>/edit" class="btn">Edit</a>
+
+                <form method="POST" action="/service/<%= request.id %>/delete">
+                    <button onclick="return confirm('Delete this service?')">Delete</button>
+                </form>
+            </div>
         </div>
     <% }) %>
 

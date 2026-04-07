@@ -1,6 +1,7 @@
 import express from "express";
 import { requiredAuth, requiredRole } from "../middleware/global.js";
 import { createServiceRequest, getUserRequest, getAllRequests, updateRequestStatus } from "../models/service.js";
+import { deleteRequest, getRequestById, updateRequest } from "../models/service.js";
 
 const router = express.Router();
 
@@ -38,6 +39,24 @@ router.post("/service/:id/status", requiredRole("admin"), async (req, res) => {
     await updateRequestStatus(req.params.id, status);
 
     res.redirect("/service/Dashboard");
+});
+
+//This is for deleting a service request (Admin only and only for rare exceptions)
+router.post("/service/:id/delete", requiredRole("admin"), async (req, res) => {
+    await deleteRequest(req.params.id);
+    res.redirect("/service/manage");
+});
+
+//This is for the edit on the service forms
+router.get("/service/:id/edit", requiredRole("admin"), async (req, res) => {
+    const request = await getRequestById(req.params.id);
+    res.render("editService", {request});
+});
+
+//This is to update the information on the service request
+router.post("/service/:id", requiredRole("admin"), async (req, res) => {
+    await updateRequest(req.params.id, req.body);
+    res.redirect("/service/manage");
 });
 
 export default router;
