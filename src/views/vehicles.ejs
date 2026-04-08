@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vehicles</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <header>
     
@@ -27,7 +27,7 @@
         <div class="vehicle-grid">
             <% vehicles.forEach(vehicle => { %>
                 <a href="/vehicle/<%= vehicle.id %>" class="vehicle-card">
-                    <img src="<%= vehicle.image_url %>" alt="car" />
+                    <img src="/images/<%= vehicle.image_url %>" alt="car" />
                     <div class="card-content">
                         <h3><%= vehicle.year %> <%= vehicle.title %></h3>
                     </div>

@@ -1,6 +1,15 @@
 <div class="car-card">
-    <img src="<%= vehicle.image %>" alt="Car">
-    <h3><%= vehicle.year %> <%= vehicle.title %></h3>
-    <p class="price"><%= vehicle.price %></p>
-    <p> <%= vehicle.description %> </p>
+    <img src="/images/<%= vehicle.image_url %>" alt="Car">
+
+    <div class="card-content">
+        <h3><%= vehicle.year %> <%= vehicle.title %></h3>
+
+        <p class="price">$<%= vehicle.price %></p>
+
+        <p class="description"><%= vehicle.description %></p>
+
+        <a href="/vehicle/<%= vehicle.id %>" class="view-btn">
+            View Details
+        </a>
+    </div>
 </div>

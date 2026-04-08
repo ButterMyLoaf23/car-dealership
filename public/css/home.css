@@ -5,7 +5,7 @@ body {
 
 .hero {
     background: url('https://www.copilotsearch.com/uploads/photo-of-alexandria-va-car-dealership.jpg') center/cover no-repeat;
-    height: 500px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,33 +47,6 @@ body {
     background: #c4001d;
 }
 
-.search-bar {
-  background: white;
-  padding: 20px;
-  margin: -50px auto 40px;
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  border-radius: 8px;
-}
-
-.search-bar select,
-.search-bar input {
-  padding: 10px;
-  width: 18%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.search-bar button {
-  background: #e60023;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
 
 .inventory {
   padding: 40px;
@@ -112,10 +85,6 @@ body {
   padding: 10px;
 }
 
-.car-card p {
-  padding: 0 10px 10px;
-  color: #666;
-}
 
 .features {
   display: flex;
@@ -131,5 +100,12 @@ body {
 }
 
 .feature-box h4 {
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
   margin-bottom: 10px;
 }
