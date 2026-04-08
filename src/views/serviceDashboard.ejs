@@ -12,31 +12,37 @@
     </header>
 
     <h1>Manage Requests</h1>
+    
+    <div class="service-grid">
+        <% request.forEach(request => { %>
+            <div class="service-card">
+                <div class="card-top">
+                    <h3><%= request.year %> <%= request.make %> <%= request.model %></h3>
+                    <p><strong>Status:</strong><%= request.status %></p>
+                </div>
 
-    <% request.forEach(request => { %>
-        <div>
-            <p><strong>Vehicle:</strong><%= request.year %> <%= request.make %> <%= request.model %></p>
-            <p><strong>Service:</strong><%= request.service_type %></p>
-            <p><strong>Status:</strong><%= request.status %></p>
+                <p class="service-type"><%= request.service_type %></p>
 
-            <div class="admin-power">
-                <form method="POST" action="/service/<%= request.id %>/status">
-                    <select name="status">
-                        <option>Pending</option>
-                        <option>In Progress</option>
-                        <option>Completed</option>
-                    </select>
-                    <button>Update</button>
-                </form>
+                <p class="notes"><%= request.notes %></p>
 
-                <a href="/service/<%= request.id %>/edit" class="btn">Edit</a>
+                <div class="admin-power">
+                    <form method="POST" action="/service/<%= request.id %>/status">
+                        <select name="status" class="status-select">
+                            <option>Pending</option>
+                            <option>In Progress</option>
+                            <option>Completed</option>
+                        </select>
+                        <button class="btn-primary">Update</button>
+                    </form>
 
-                <form method="POST" action="/service/<%= request.id %>/delete">
-                    <button onclick="return confirm('Delete this service?')">Delete</button>
-                </form>
+                    <a href="/service/<%= request.id %>/edit" class="btn-secondary">Edit</a>
+
+                    <form method="POST" action="/service/<%= request.id %>/delete">
+                        <button onclick="return confirm('Delete this service?')" class="btn-danger">Delete</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    <% }) %>
-
+        <% }) %>
+    </div>
 </body>
 </html>

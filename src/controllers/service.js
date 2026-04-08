@@ -38,7 +38,7 @@ router.post("/service/:id/status", requiredRole("admin"), async (req, res) => {
 
     await updateRequestStatus(req.params.id, status);
 
-    res.redirect("/service/Dashboard");
+    res.redirect("/service/manage");
 });
 
 //This is for deleting a service request (Admin only and only for rare exceptions)
