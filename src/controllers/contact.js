@@ -30,8 +30,6 @@ router.post("/contact/:id", requiredRole("admin"), async (req, res) => {
 
     const isFaq = req.body.is_faq ? true : false;
 
-    console.log("REQ BODY:", req.body); // DEBUG
-
     await sentMessage(req.params.id, status, response, isFaq);
 
     res.redirect("/contact/manage");
