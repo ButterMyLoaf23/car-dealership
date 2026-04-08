@@ -10,6 +10,7 @@ import vehicles from "./src/controllers/vehicles.js";
 import { definedUser } from "./src/middleware/global.js";
 import review from "./src/controllers/review.js";
 import service from "./src/controllers/service.js";
+import contact from "./src/controllers/contact.js";
 
 dotenv.config();
 
@@ -54,6 +55,9 @@ app.use("/reviews", review);
 
 //This is for the service page
 app.use ("/", service);
+
+//This is for my contact page
+app.use("/", contact);
 
 app.use((req, res, next) => {
     res.status(404).render("errors/404", {
