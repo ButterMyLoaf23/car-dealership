@@ -12,13 +12,34 @@
 
     <h1>Contact messages</h1>
 
-    <% messages.forEach(messages => { %>
-        <div class="service-card">
-            <p>Status: <%= messages.status %></p>
-            <p>Name: <%= messages.name %></p>
-            <p>Email: <%= messages.email %></p>
-            <p> <%= messages.message %></p>
-        </div>
-    <% }) %>
+    <% if (messages && messages.length > 0) { %>
+
+        <% messages.forEach(message => { %>
+            <div class="service-card">
+                <p>Status: <%= message.status %></p>
+                <p>Name: <%= message.name %></p>
+                <p>Email: <%= message.email %></p>
+                <p> <%= message.message %></p>
+
+                <p>Response: <%= message.response %></p>
+
+                <form method="POST" action="/contact/<%= message.id %>">
+                    <select name="status">
+                        <option>Responded</option>
+                        <option>Closed</option>
+                    </select>
+
+                    <textarea name="response" placeholder="Write your response here"></textarea>
+
+                    <label>
+                        <input type="checkbox" name="is_faq" value = "true">
+                        FAQ?
+                    </label>
+
+                    <button>Send</button>
+                </form>
+            </div>
+        <% }) %>
+    <% } %>    
 </body>
 </html>

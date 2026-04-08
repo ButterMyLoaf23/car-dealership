@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+</head>
+<body>
+    <header>
+        <%- include("partials/header") %>
+    </header>
+
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq-card">
+        <% faqs.forEach(faq => { %>
+            <div class="faq">
+                <h3><%= faq.message %></h3>
+                <p><%= faq.response %></p>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>

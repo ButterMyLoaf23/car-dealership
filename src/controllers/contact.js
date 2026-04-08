@@ -1,5 +1,5 @@
 import express from "express";
-import { messages, getMessages } from "../models/contact.js";
+import { messages, getMessages, sentMessage, getFaqMessages } from "../models/contact.js";
 import {requiredRole} from "../middleware/global.js";
 
 const router = express.Router();
@@ -23,6 +23,24 @@ router.get("/contact/manage", requiredRole("admin"), async (req, res) => {
     const messages = await getMessages();
 
     res.render("contactDashboard", {messages});
+});
+
+router.post("/contact/:id", requiredRole("admin"), async (req, res) => {
+    const { status, response } = req.body;
+
+    const isFaq = req.body.is_faq ? true : false;
+
+    console.log("REQ BODY:", req.body); // DEBUG
+
+    await sentMessage(req.params.id, status, response, isFaq);
+
+    res.redirect("/contact/manage");
+});
+
+router.get("/faq", async (req, res) => {
+    const faqs = await getFaqMessages ();
+
+    res.render("faq", {faqs});
 });
 
 export default router;
